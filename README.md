@@ -31,7 +31,7 @@ To run these scripts, you only need to have the **.NET SDK** installed on your s
 
 ## 📂 Included Scripts & Architectures
 
-### 1. Domain-Driven Design (.NET 9) — `BatchCreateDDDProjectWithTests.bat`
+### 1. Domain-Driven Design (.NET 9) — `create-ddd-dotnet.bat`
 Creates a **DDD / Clean Architecture** structure with strict layering:
 * **`Domain`**: Pure enterprise logic and models.
 * **`Application`**: Application logic and interfaces.
@@ -47,7 +47,7 @@ Creates a **DDD / Clean Architecture** structure with strict layering:
 
 ---
 
-### 2. Onion Architecture (NoSQL / MongoDB) — `BatchCreateOnionArchitechtureProjectWithTestsNoSQL.bat`
+### 2. Onion Architecture (NoSQL / MongoDB) — `create-onion-nosql.bat`
 Scaffolds a project structure tailored for **MongoDB** backends:
 * **`Core`**: Contains `Entities`, `Interfaces`, `Services`, and installs `Newtonsoft.Json`.
 * **`Infrastructure`**: Contains `Repositories`, `UnitOfWork`, and installs `MongoDB.Driver`, `MongoDB.Bson`, `Microsoft.Extensions.Configuration`.
@@ -56,7 +56,7 @@ Scaffolds a project structure tailored for **MongoDB** backends:
 
 ---
 
-### 3. Onion Architecture (SQL / EF Core) — `BatchCreateOnionArchitechtureProjectWithTestsSQL.bat`
+### 3. Onion Architecture (SQL / EF Core) — `create-onion-sql.bat`
 Scaffolds an **Entity Framework Core (SQL Server)** project structure:
 * **`Core`**: Entities, Interfaces, Services.
 * **`Infrastructure`**: `Data`, `Repositories`, `UnitOfWork`, pre-loaded with `Microsoft.EntityFrameworkCore.SqlServer`, `Design`, and `Tools`.
@@ -65,7 +65,7 @@ Scaffolds an **Entity Framework Core (SQL Server)** project structure:
 
 ---
 
-### 4. Simple Monolithic Web API — `BatchCreateSimpleMonolithic.bat`
+### 4. Simple Monolithic Web API — `create-monolith-api.bat`
 Scaffolds a streamlined, single-project Web API structure directly in the current working folder:
 * Generates Web API and `.sln` in the root folder named after the current directory.
 * Cleans default template bloat (removes default `WeatherForecast` controller and model).
