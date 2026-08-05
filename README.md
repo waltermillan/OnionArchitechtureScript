@@ -1,6 +1,6 @@
 # .NET Project Template Generators
 
-A collection of Windows Batch scripts (`.bat`) designed to automate the scaffolding and initialization of .NET solutions and projects following Clean Architecture, Onion Architecture, and Modular Single-Project patterns.
+A collection of Windows Batch scripts (`.bat`) designed to automate the scaffolding and initialization of .NET solutions and projects following Domain-Driven Design (DDD), Onion Architecture, and Monolithic patterns.
 
 ---
 
@@ -31,8 +31,8 @@ To run these scripts, you only need to have the **.NET SDK** installed on your s
 
 ## 📂 Included Scripts & Architectures
 
-### 1. Clean Architecture (.NET 9) — `setup_clean_architecture.bat`
-Creates an explicit **Clean Architecture** structure with strict layering:
+### 1. Domain-Driven Design (.NET 9) — `BatchCreateDDDProjectWithTests.bat`
+Creates a **DDD / Clean Architecture** structure with strict layering:
 * **`Domain`**: Pure enterprise logic and models.
 * **`Application`**: Application logic and interfaces.
 * **`Infrastructure`**: External concerns and data access.
@@ -47,7 +47,7 @@ Creates an explicit **Clean Architecture** structure with strict layering:
 
 ---
 
-### 2. Onion Architecture (MongoDB Stack) — `setup_onion_mongodb.bat`
+### 2. Onion Architecture (NoSQL / MongoDB) — `BatchCreateOnionArchitechtureProjectWithTestsNoSQL.bat`
 Scaffolds a project structure tailored for **MongoDB** backends:
 * **`Core`**: Contains `Entities`, `Interfaces`, `Services`, and installs `Newtonsoft.Json`.
 * **`Infrastructure`**: Contains `Repositories`, `UnitOfWork`, and installs `MongoDB.Driver`, `MongoDB.Bson`, `Microsoft.Extensions.Configuration`.
@@ -56,7 +56,7 @@ Scaffolds a project structure tailored for **MongoDB** backends:
 
 ---
 
-### 3. Onion Architecture (EF Core / SQL Server Stack) — `setup_onion_efcore.bat`
+### 3. Onion Architecture (SQL / EF Core) — `BatchCreateOnionArchitechtureProjectWithTestsSQL.bat`
 Scaffolds an **Entity Framework Core (SQL Server)** project structure:
 * **`Core`**: Entities, Interfaces, Services.
 * **`Infrastructure`**: `Data`, `Repositories`, `UnitOfWork`, pre-loaded with `Microsoft.EntityFrameworkCore.SqlServer`, `Design`, and `Tools`.
@@ -65,7 +65,7 @@ Scaffolds an **Entity Framework Core (SQL Server)** project structure:
 
 ---
 
-### 4. Lightweight Single-Project Web API — `setup_lightweight_api.bat`
+### 4. Simple Monolithic Web API — `BatchCreateSimpleMonolithic.bat`
 Scaffolds a streamlined, single-project Web API structure directly in the current working folder:
 * Generates Web API and `.sln` in the root folder named after the current directory.
 * Cleans default template bloat (removes default `WeatherForecast` controller and model).
@@ -79,16 +79,3 @@ Scaffolds a streamlined, single-project Web API structure directly in the curren
 2. Navigate to your target directory where you want the project created:
    ```cmd
    cd C:\path\to\your\projects
-   ```
-3. Run the target script (e.g., inside an empty directory created for your new project):
-   ```cmd
-   path\to\script\setup_clean_architecture.bat
-   ```
-4. The script will generate all projects, apply project references, restore NuGet packages, and build the solution automatically.
-
----
-
-## ⚙️ Customization
-
-- **Generic File Imports**: Scripts using `xcopy` expect standard base template folders located at `C:\proyectos\.NET Core\<PROJECT_NAME>\Generic.*`. Adjust the `BASE_DIR` variable inside the script to match your local setup if you utilize generic base files.
-- **Target Framework**: You can change `-f net9.0` to `-f net8.0` inside any script to target a different .NET version.
