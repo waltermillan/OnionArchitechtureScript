@@ -10,7 +10,6 @@ mkdir src
 mkdir tests
 
 :: 3. Crear proyectos dentro de sus carpetas definitivas
-:: Es mejor crearlos directamente en su ruta para evitar problemas de movimiento de archivos
 call dotnet new classlib -n Domain -f net9.0 -o src/Domain
 call dotnet new classlib -n Application -f net9.0 -o src/Application
 call dotnet new classlib -n Infrastructure -f net9.0 -o src/Infrastructure
@@ -24,7 +23,13 @@ call dotnet sln add src/Infrastructure/Infrastructure.csproj
 call dotnet sln add src/Web.Api/Web.Api.csproj
 call dotnet sln add tests/UnitTests/UnitTests.csproj
 
-:: 5. Establecer referencias entre proyectos
+:: 5. Limpieza de archivos por defecto de las plantillas (Class1.cs y UnitTest1.cs)
+if exist "src\Domain\Class1.cs" del /F /Q "src\Domain\Class1.cs"
+if exist "src\Application\Class1.cs" del /F /Q "src\Application\Class1.cs"
+if exist "src\Infrastructure\Class1.cs" del /F /Q "src\Infrastructure\Class1.cs"
+if exist "tests\UnitTests\UnitTest1.cs" del /F /Q "tests\UnitTests\UnitTest1.cs"
+
+:: 6. Establecer referencias entre proyectos
 :: Application solo conoce a Domain
 call dotnet add src/Application/Application.csproj reference src/Domain/Domain.csproj
 
@@ -38,5 +43,5 @@ call dotnet add src/Web.Api/Web.Api.csproj reference src/Infrastructure/Infrastr
 :: Tests referencia a lo que necesites probar (usualmente Application o Domain)
 call dotnet add tests/UnitTests/UnitTests.csproj reference src/Application/Application.csproj
 
-echo Estructura de %PROJECT_NAME% creada con éxito.
+echo Estructura de %PROJECT_NAME% creada con éxito y limpia de archivos por defecto.
 pause
